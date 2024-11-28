@@ -20,6 +20,7 @@ const paintFlags =(flags)=>{
   //Creamos un elemnto ul
   const elementUl =document.createElement('ul');
 
+  //creamos un array con las banderas ordenadas alfabeticamente
     const sortFlags= flags.sort((a, b) => {
       if (a.name.common > b.name.common) return 1;
       if (a.name.common < b.name.common) return -1;
@@ -27,21 +28,10 @@ const paintFlags =(flags)=>{
       // Si los nombres también son iguales, comparar por edad (numérico)
       return 0;
     });
-    console.log(sortFlags);
+  
 
     sortFlags.forEach(flag => {
-/*
-      const plantilla=`<li class="elementLi">
-                        <div class"divContainer">
-                           <div class"divImg">
-                             <img src="${flag.flags[0]}" alt="Imagen de la bandera de ${flag.name.common}">
-                           </div>
-                           <div class"divText">
-                             <h3>${flag.name.common}</>
-                           </div>
-                        </div>
-                        </li>`
-    */
+
       const elementLi =document.createElement('li');
       elementLi.classList.add('elementLi');
 
@@ -75,7 +65,7 @@ const paintFlags =(flags)=>{
       elementLi.appendChild(divContainer);
    
 
-      //ventana flotane
+      //ventana flotante
       const divPop =document.createElement('div');
       divPop.classList.add('divPop');
 
@@ -131,32 +121,3 @@ const paintFlags =(flags)=>{
 
 getflag().then((flags)=> paintFlags(flags));
 
-
-
-
-/*
-    const getUsers = async (userId) => {
-        try {
-          const response = await fetch('https://jsonplaceholder.typicode.com/todos/');
-      
-          if (!response.ok) {
-            throw new Error('Ha surgido un error: ', response.status);
-          }
-          const data = await response.json();
-          const dataFilterId = data.filter((data) => data.userId == userId);
-          return dataFilterId;
-        } catch (error) {
-          console.log('Error al obtener los datos');
-        }
-      };
-      
-      const template = (userId, users) => {
-        container = document.getElementById(userId);
-        users.forEach((user) => {
-          let templateUser = `<li>${user.title}</li>`;
-          container.innerHTML += templateUser;
-        });
-      };
-      
-      getUsers(1).then((data) => template('userId1', data));
-      */
